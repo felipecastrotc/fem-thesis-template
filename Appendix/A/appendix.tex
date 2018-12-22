@@ -1,0 +1,36 @@
+% !TEX root = ../thesis.tex
+
+% ******************************* Thesis Appendix ******************************
+\appendix
+
+% Setting the code text colors and spacing
+\definecolor{gray}{HTML}{808080}
+\definecolor{darkgray}{HTML}{484848}
+
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+%   numbers=none,
+  numbers=left,
+  numberstyle=\tiny\color{darkgray},
+  keywordstyle=\color{darkgray},
+  commentstyle=\color{gray},
+  stringstyle=\color{darkgray},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=4
+}
+
+\begin{appendices}
+
+\chapter{Python codes}\label{app:python}
+
+\section{Animation example}
+  
+  \lstinputlisting[language=Python]{./Appendix/A/codes/random_data.py}
+
+\end{appendices}

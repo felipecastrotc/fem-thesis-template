@@ -1,0 +1,284 @@
+% **********************************************************************
+% *********************** Bibliography *********************************
+% **********************************************************************
+
+% https://de.sharelatex.com/learn/biblatex_bibliography_styles
+% https://tex.stackexchange.com/questions/25701/bibtex-vs-biber-and-biblatex-vs-natbib
+
+% \usepackage{natbib}
+% \usepackage[backend=bibtex, style=numeric, citestyle=numeric, sorting=none, natbib=true,url=false]{biblatex}
+% \usepackage[backend=bibtex, style=numeric-comp, citestyle=numeric, sorting=none, natbib=true,url=false]{biblatex}
+
+\usepackage[backend=bibtex, mincitenames=1, maxcitenames=3, style=ieee, citestyle=numeric, sorting=none, natbib=true, doi=false, isbn=false, url=false]{biblatex}
+
+\addbibresource{References/references.bib}  % References path
+
+% \usepackage[numbers,compress]{natbib}
+
+% \usepackage[backend=biber, style=numeric-comp, citestyle=numeric, sorting=none, natbib=true]{biblatex}
+% \addbibresource{References/references.bib}
+
+% \renewcommand{\bibname}{References}
+% \renewcommand{\refname}{References}
+
+% \usepackage{bookmark}
+
+% ******************************************************************************
+% ************************ Custom Packages *************************************
+% ******************************************************************************
+
+% *************************** Graphics and figures *****************************
+
+%\usepackage{rotating}
+%\usepackage{wrapfig}
+
+% Uncomment the following two lines to force Latex to place the figure.
+% Use [H] when including graphics. Note 'H' instead of 'h'
+%\usepackage{float}
+%\restylefloat{figure}
+
+% Ensure that the figures be placed in the same section
+\usepackage[section]{placeins}  
+
+\usepackage{caption}
+% \usepackage{subcaption}
+
+
+% ***************************** Tables Packages ********************************
+
+\usepackage{booktabs} % For professional looking tables
+\usepackage{tabularx,tabulary}
+\usepackage{multirow}
+% \usepackage{array}
+
+%\usepackage{multicol}
+%\usepackage{longtable}
+
+% ************************* Algorithms and Pseudocode **************************
+
+%\usepackage{algpseudocode}
+
+% *********************************** SI Units *********************************
+
+\usepackage{siunitx} % use this package module for SI units
+
+
+% ******************************* Line Spacing *********************************
+
+% Choose linespacing as appropriate. Default is one-half line spacing as per the
+% FEM guidelines
+
+% \doublespacing
+\onehalfspacing
+% \singlespacing
+
+% ********************** TOC depth and numbering depth *************************
+
+\setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{2}
+
+% ********************************* Appendix ***********************************
+
+% The default value of both \appendixtocname and \appendixpagename is `Appendices'. These names can all be changed via:
+
+%\renewcommand{\appendixtocname}{List of appendices}
+\renewcommand{\appendixname}{Appendix}
+
+% ******************************************************************************
+% **************** Template Default Packages ***********************************
+% ******************************************************************************
+
+% **************************** Hyphenation ************************************
+
+\ifenglish
+    \usepackage[british]{babel} 
+\else
+    \usepackage[portuges, brazilian]{babel} 
+\fi
+
+% ******************* Sections, Table of Contents & Appendices *****************
+% add Bibliography, List of figures and tables to contents
+\usepackage{epigraph}
+\usepackage{footnote}
+\usepackage{tocbibind}
+% \usepackage[nottoc,notlof,notlot]{tocbibind}
+% Add appendices
+\usepackage[title,titletoc]{appendix}
+
+% \ifenglish
+%     \renewcommand{\contentsname}{Table of contents}
+%     \renewcommand{\listfigurename}{List of figures}
+%     \renewcommand{\listtablename}{List of tables}
+% \else
+%     \renewcommand{\contentsname}{Tabela de cdfsdfdsonteúdo}
+%     \renewcommand{\listfigurename}{Lista de figuras}
+%     \renewcommand{\listtablename}{Lista de tabelas}
+% \fi
+
+% Hides Contents appearing from TOC, but adds it to bookmarks
+% \let\temptableofcontents\tableofcontents
+% \renewcommand{\tableofcontents}{
+%     \cleardoublepage
+%     \ifen
+%         \pdfbookmark[0]{\contentsname}{Contents}
+%     \else
+%         \pdfbookmark[0]{\contentsname}{Conteúdo}
+%     \fi
+%   \temptableofcontents
+% }
+
+% \renewcommand{\cfttoctitlefont}{\hspace*{\fill}\Huge\bfseries}
+% \renewcommand{\cftaftertoctitle}{\hspace*{\fill}}
+% \renewcommand{\cftlottitlefont}{\hspace*{\fill}\Huge\bfseries}
+% \renewcommand{\cftafterlottitle}{\hspace*{\fill}}
+% \renewcommand{\cftloftitlefont}{\hspace*{\fill}\Huge\bfseries}
+% \renewcommand{\cftafterloftitle}{\hspace*{\fill}}
+
+
+% *************************** Graphics and Figures *****************************
+
+\usepackage{graphics}
+% \usepackage[normalsize]{subfigure} 
+\usepackage{subcaption}
+% \usepackage[usenames, dvipsnames]{color}
+\usepackage{psfrag,layout}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\usetikzlibrary{positioning,calc}
+\usepackage{varwidth}
+% \usepackage[outline]{contour}
+\ifpdf
+  % Convert eps figures to pdf
+  \usepackage{epstopdf}
+  % \usepackage[pdftex]{graphicx}
+  \usepackage{graphicx}
+  \DeclareGraphicsExtensions{.png, .jpg, .pdf}
+  % \pdfcompresslevel=9
+  \graphicspath{{Figs/raster/}{Figs/}}
+\else
+  \usepackage{graphicx}
+  \DeclareGraphicsExtensions{.eps, .ps}
+  \graphicspath{{Figs/vector/}{Figs/}}
+\fi
+
+% **********************************************************************
+% *********************** Meta Data PDF ********************************
+% **********************************************************************
+
+\usepackage[unicode=true, linktocpage=true]{hyperref}
+
+\ifprint
+  % For Print version
+  \hypersetup{
+    final=true,
+    plainpages=false,
+    pdfstartview=FitV,
+    pdftoolbar=true,
+    pdfmenubar=true,
+    bookmarksopen=true,
+    bookmarksnumbered=true,
+    breaklinks=true,
+    linktocpage,
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=black,
+    citecolor=black,
+    anchorcolor=black
+  }
+\else
+  % For PDF Online version
+  \hypersetup{
+    final=true,
+    plainpages=false,
+    pdfstartview=FitV,
+    pdftoolbar=true,
+    pdfmenubar=true,
+    bookmarksopen=true,
+    bookmarksnumbered=true,
+    breaklinks=true,
+    linktocpage,
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    citecolor=blue,
+    anchorcolor=green
+  }
+\fi
+
+\hypersetup{
+    pdftitle = {\ifenglish \Wtitleen \else \Wtitle \fi},
+    pdfauthor = {\Wauthor},
+    pdfsubject= {\Wsubject},
+    pdfkeywords= {\Wkeywords},
+    % pdfsubject={\ifthenelse{\equal{\Wworktype}{phd}}{PhD Thesis}{Master Dissertation}},
+}
+
+% ******************************* Nomenclature *********************************
+
+\usepackage[intoc]{nomencl}
+\usepackage{needspace} % Break the page if there is a certain ammount of space below
+\makenomenclature
+
+\renewcommand{\nomgroup}[1]{%
+\ifenglish
+  \ifthenelse{\equal{#1}{A}}{\needspace{6em} \item[\textbf{Roman Symbols}]}{%
+  \ifthenelse{\equal{#1}{G}}{\needspace{6em} \item[\textbf{Greek Symbols}]}{%
+  \ifthenelse{\equal{#1}{Z}}{\needspace{6em} \item[\textbf{Acronyms / Abbreviations}]}{%
+  \ifthenelse{\equal{#1}{R}}{\needspace{6em} \item[\textbf{Superscripts}]}{%
+  \ifthenelse{\equal{#1}{S}}{\needspace{6em} \item[\textbf{Subscripts}]}{%
+  \ifthenelse{\equal{#1}{X}}{\needspace{6em} \item[\textbf{Other Symbols}]}
+  {}
+  }% matches mathematical symbols > X
+  }% matches Subscripts           > S
+  }% matches Superscripts         > R
+  }% matches Abbreviations        > Z
+  }% matches Greek Symbols        > G
+\else
+  \ifthenelse{\equal{#1}{A}}{\needspace{6em} \item[\textbf{Letras Romanas}]}{%
+  \ifthenelse{\equal{#1}{G}}{\needspace{6em} \item[\textbf{Letras Gregas}]}{%
+  \ifthenelse{\equal{#1}{Z}}{\needspace{6em} \item[\textbf{Acrônimos / Abreviações}]}{%
+  \ifthenelse{\equal{#1}{R}}{\needspace{6em} \item[\textbf{Superescritos}]}{%
+  \ifthenelse{\equal{#1}{S}}{\needspace{6em} \item[\textbf{Subescritos}]}{%
+  \ifthenelse{\equal{#1}{X}}{\needspace{6em} \item[\textbf{Outros Símbolos}]}
+  {}
+  }% matches mathematical symbols > X
+  }% matches Subscripts           > S
+  }% matches Superscripts         > R
+  }% matches Abbreviations        > Z
+  }% matches Greek Symbols        > G
+\fi
+}% matches Roman Symbols        > A
+
+% To add nomenclature in the header
+% \renewcommand{\nompreamble}{\markboth{\nomname}{\nomname}}
+
+% % Add nomenclature to contents and print out nomenclature
+% \newcommand{\printnomencl}[1][]{
+% \ifthenelse{\equal {#1}{}}
+% {\printnomenclature}
+% {\printnomenclature[#1]}
+% %\addcontentsline{toc}{chapter}{\nomname}
+% }
+
+% Add nomenclature to contents and print out nomenclature
+% \newcommand{\printnomencl}{
+%     \begin{listenv}
+%         \ifenglish
+%             \printnomenclature
+%         \else
+%             \renewcommand{\nomname}{Lista de Abreviaturas e Siglas}
+%             \printnomenclature
+%         \fi
+%     \end{listenv}
+% }
+
+% \usepackage{tocstyle}
+% % \usetocstyle{standard}
+% % \usetocstyle{nopagecolumn}
+% \settocstylefeature[-1]{entryhook}{\hfil}%centering part entry
+% \settocstylefeature[-1]{pagenumberbox}{\csname @gobble\endcsname}%no page numbers for part
+
+% % \settocstylefeature{pagenumberhook}{\itshape~}
+
+
+% \tocloftpagestyle{empty}

@@ -1,0 +1,549 @@
+% *********************************************************************
+% ******************************** Packages ***************************
+% *********************************************************************
+
+% ************************* Font  *************************************
+\usepackage{times}         % Default font
+\usepackage{listingsutf8}  % Source Code
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{amscd, amsfonts, textcomp}
+\usepackage[utf8]{inputenc}
+
+% ************************* Conditional Statements *********************
+\usepackage{ifthen}   % Conditional statements
+\usepackage{ifpdf}    % Check for pdfLaTeX
+\usepackage{ifxetex}  % XeLaTeX
+\usepackage{etoolbox} % Also check if command is empty
+
+% ************************* Insert PDF page *********************
+\usepackage{pdfpages}
+
+% **********************************************************************
+% *********************** Page layout **********************************
+% **********************************************************************
+
+% Page dimensions
+\usepackage[top=3cm,bottom=2cm,right=2cm,left=3cm]{geometry}
+\usepackage{lscape}    % Supports Landscape Layout
+\usepackage{setspace}  % Define line spacing in paragraph
+\usepackage{calc}      % calculate vertical spacing
+\usepackage{titlesec}  % Change the section title settings
+\usepackage{emptypage} % Does number the empty pages
+
+\usepackage{fancyhdr}
+
+\renewcommand{\headrulewidth}{0pt}   % Remove the horizontal bar
+
+\fancypagestyle{numbered}{%
+    \fancyhf{}% clears all header and footer fields
+    \fancyhead[RE,RO]{\thepage}% Add the page number
+    }
+    
+\fancypagestyle{empty}{%
+    \fancyhf{}% clears all header and footer fields
+    % \fancyhead[RE,RO]{}% Add the page number
+}
+    
+\fancypagestyle{plain}{%
+    \fancyhf{}% clears all header and footer fields
+    \fancyhead[RE,RO]{\thepage}% Add the page number
+}
+
+% \pagestyle{fancy}
+\pagestyle{numbered}
+% \patchcmd{\chapter}{plain}{numbered}{}{}
+
+\addtocontents{toc}{\protect\thispagestyle{empty}}
+
+\titleformat{\chapter}
+  {\normalfont\LARGE\bfseries}{\thechapter}{1em}{}
+\titlespacing*{\chapter}{0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+
+
+% **********************************************************************
+% *********************** Commands info ********************************
+% **********************************************************************
+\newif\ifprint\printfalse
+
+\newif\ifenglish\englishfalse
+
+\newif\ifhomologation\homologationfalse
+
+% Thesis/Dissertation title in PT-BR
+\newcommand{\Wtitle}{}
+\renewcommand{\title}[1]{\renewcommand{\Wtitle}{#1}}
+% Thesis/Dissertation title in EN
+\newcommand{\Wtitleen}{}
+\newcommand{\titleen}[1]{\renewcommand{\Wtitleen}{#1}}
+% Author
+\newcommand{\Wauthor}{}
+\renewcommand{\author}[1]{\renewcommand{\Wauthor}{#1}}
+% Master/PhD - master -> Master and phd -> PhD
+\newcommand{\Wworktype}{phd}
+\newcommand{\worktype}[1]{\renewcommand{\Wworktype}{#1}}
+% Author sex m/f
+\newcommand{\Wsex}{}
+\newcommand{\sex}[1]{\renewcommand{\Wsex}{#1}}
+% Supervisor
+\newcommand{\Wsupervisor}{}
+\newcommand{\supervisor}[1]{\renewcommand{\Wsupervisor}{#1}}
+% Advisor
+\newcommand{\Wadvisor}{}
+\newcommand{\advisor}[1]{\renewcommand{\Wadvisor}{#1}}
+% Defense components
+% President
+\newcommand{\Wexamf}{}
+\newcommand{\examf}[1]{\renewcommand{\Wexamf}{#1}}
+\newcommand{\Wexamfinst}{}
+\newcommand{\examfinst}[1]{\renewcommand{\Wexamfinst}{#1}}
+
+% Second component
+\newcommand{\Wexams}{}
+\newcommand{\exams}[1]{\renewcommand{\Wexams}{#1}}
+\newcommand{\Wexamsinst}{}
+\newcommand{\examsinst}[1]{\renewcommand{\Wexamsinst}{#1}}
+% Third component
+\newcommand{\Wexamt}{}
+\newcommand{\examt}[1]{\renewcommand{\Wexamt}{#1}}
+\newcommand{\Wexamtinst}{}
+\newcommand{\examtinst}[1]{\renewcommand{\Wexamtinst}{#1}}
+
+% University in PT-BR
+\newcommand{\Wuniversity}{Universidade Estadual de Campinas}
+\newcommand{\university}[1]{\renewcommand{\Wuniversity}{#1}}
+% University in EN
+\newcommand{\Wuniversityen}{University of Campinas}
+\newcommand{\universityen}[1]{\renewcommand{\Wuniversityen}{#1}}
+% School/Institute in PT-BR
+\newcommand{\Wschool}{Faculdade de Engenharia Mecânica}
+\newcommand{\school}[1]{\renewcommand{\Wschool}{#1}}
+% School/Institute in EN
+\newcommand{\Wschoolen}{School of Mechanical Engineering}
+\newcommand{\schoolen}[1]{\renewcommand{\Wschoolen}{#1}}
+% School/Institute in PT-BR
+\newcommand{\Wdepartment}{}
+\newcommand{\department}[1]{\renewcommand{\Wdepartment}{#1}}
+% Graduate programme
+\newcommand{\Wprogramme}{Comissão de Pós-graduação em Engenharia Mecânica}
+\newcommand{\programme}[1]{\renewcommand{\Wprogramme}{#1}}
+% Degree title in PT-BR
+\newcommand{\Wdegreetitle}{Engenharia Mecânica}
+\newcommand{\degreetitle}[1]{\renewcommand{\Wdegreetitle}{#1}}
+% Degree title in EN
+\newcommand{\Wdegreetitleen}{Mechanical Engineering}
+\newcommand{\degreetitleen}[1]{\renewcommand{\Wdegreetitleen}{#1}}
+% Degree area in PT-BR
+\newcommand{\Wdegreearea}{Mecatrônica}
+\newcommand{\degreearea}[1]{\renewcommand{\Wdegreearea}{#1}}
+% Degree area in EN
+\newcommand{\Wdegreeareaen}{Mechatronics}
+\newcommand{\degreeareaen}[1]{\renewcommand{\Wdegreeareaen}{#1}}
+% Degree day
+\newcommand{\Wdegreeday}{}
+\newcommand{\degreeday}[1]{\renewcommand{\Wdegreeday}{#1}}
+% Degree month
+\newcommand{\Wdegreemonth}{}
+\newcommand{\degreemonth}[1]{\renewcommand{\Wdegreemonth}{#1}}
+% Degree year
+\newcommand{\Wdegreeyear}{}
+\newcommand{\degreeyear}[1]{\renewcommand{\Wdegreeyear}{#1}}
+% Library catalog
+\newcommand{\Wlibcatalog}{}
+\newcommand{\libcatalog}[1]{\renewcommand{\Wlibcatalog}{#1}}
+% Epigraph
+\newcommand{\Wepigraphtext}{}
+\newcommand{\epigraphtext}[1]{\renewcommand{\Wepigraphtext}{#1}}
+\newcommand{\Wepigraphauthor}{}
+\newcommand{\epigraphauthor}[1]{\renewcommand{\Wepigraphauthor}{#1}}
+% keywords
+\newcommand{\Wkeywords}{}
+\newcommand{\keywords}[1]{\renewcommand{\Wkeywords}{#1}}
+% subject
+\newcommand{\Wsubject}{}
+\newcommand{\subject}[1]{\renewcommand{\Wsubject}{#1}}
+
+% %% Meta information
+% \subject{FWV} \keywords{{FWV} {Signal Processing} {Biphase flow} {Master Thesis} {Engineering} {University of
+% Campinas}}
+
+% University logo
+\newcommand{\logo}{UNICAMP_logo}
+
+
+% *************************************************************************
+% ************************ Front Matter Layout ****************************
+% *************************************************************************
+
+% ******************************** Title Page *****************************
+
+\renewcommand{\maketitle}{
+\begin{emptyenv}
+    \newgeometry{top=3cm,bottom=2cm,right=2cm,left=3cm}
+    \includegraphics[width=5em]{\logo}
+    \begin{center}
+        % \vspace*{3.cm}
+        {\fontsize{14}{14}\MakeUppercase{\textbf{\Wuniversity}}}\\
+        \Wschool\\
+        \vspace*{3.cm}
+        \vspace*{\fill}
+        \textbf{\Wauthor}\\
+        \ifhomologation
+            \vspace*{\fill}
+            \ifenglish
+                \textbf{In Homologation}\\
+            \else
+                \textbf{Em Homologação}\\
+            \fi
+        \fi
+        \ifenglish
+            \vspace*{\fill}
+            {\fontsize{23}{23} \textbf{\textit{\Wtitleen}}} \\
+        \fi
+        \vspace*{\fill}
+        {\fontsize{23}{23} \textbf{\textit{\Wtitle}}}\\
+        % \vspace*{\fill}
+        % \vspace*{\fill}
+        \vspace*{6.cm}
+        CAMPINAS\\
+        \Wdegreeyear
+
+    \end{center}
+\end{emptyenv}
+}
+
+% ***************************** Signature Page ****************************
+
+\newcommand{\makesignature}{
+\begin{emptyenv}
+    \newgeometry{top=3cm,bottom=2cm,right=2cm,left=3cm}
+    % \includegraphics[width=5em]{\logo}
+    \begin{center}
+        % \vspace*{3.cm}
+        % {\fontsize{14}{14}\MakeUppercase{\textbf{\universitypt}}}\\
+        % \schoolpt\\
+        % \vspace*{1.cm}
+        \vspace*{\fill}
+        \textbf{\Wauthor}\\
+        % \vspace*{3.cm}
+        \ifenglish
+            \vspace*{\fill}
+            {\fontsize{23}{23} \textbf{\textit{\Wtitleen}}} \\
+        \fi
+        \vspace*{\fill}
+        {\fontsize{23}{23} \textbf{\textit{\Wtitle}}}\\
+        \vspace*{\fill}
+        \ifenglish
+            \begin{flushright}
+                \parbox{3in}{\ifthenelse{\equal{\Wworktype}{phd}}{Thesis}{Dissertation} presented to the \Wschoolen{} of the \Wuniversityen{} in partial fulfillment of the requirements for the degree of \ifthenelse{\equal{\Wworktype}{phd}}{Doctor}{Master} in \Wdegreetitleen, in the area of \Wdegreeareaen.}
+            \end{flushright}
+        \fi
+        % \vspace*{\fill}
+        \begin{flushright}
+            \parbox{3in}{\ifthenelse{\equal{\Wworktype}{phd}}{Tese}{Dissertação} apresentada à \Wschool{} da \Wuniversity{} como parte dos requisitos exigidos para obtenção do título de \ifthenelse{\equal{\Wworktype}{phd}}{\ifthenelse{\equal{\Wsex}{m}}{Doutor}{Doutora}}{\ifthenelse{\equal{\Wsex}{m}}{Mestre}{Mestra}} em \Wdegreetitle, na Área de \Wdegreearea.}
+        \end{flushright}
+        % \vspace*{\fill}
+        \begin{flushleft}
+            \parbox{3in}{
+                Orientador: \Wsupervisor\\
+                \ifdefempty{\Wadvisor}{
+                }{
+                    Coorientador: \Wadvisor
+                }}
+            \end{flushleft}
+        \begin{flushleft}
+            \parbox{3in}{
+            ESTE EXEMPLAR CORRESPONDE À VERSÃO FINAL DA DISSERTAÇÃO DEFENDIDA PELO ALUNO \MakeUppercase{\Wauthor}, E ORIENTADO PELO \MakeUppercase{\Wsupervisor}.
+            % \begin{center}
+            %     ...............................................................\\
+            %     ASSINATURA DO ORIENTADOR
+            % \end{center} 
+            }
+        \end{flushleft}
+        \vspace*{\fill}
+        % \vspace*{1.cm}
+        CAMPINAS\\
+        \Wdegreeyear
+
+    \end{center}
+\end{emptyenv}
+}
+
+% ***************************** Approval Page ****************************
+
+\newcommand{\makeapproval}{
+\begin{emptyenv}
+    \newgeometry{top=3cm,bottom=2cm,right=2cm,left=3cm}
+    \begin{center}
+        \vspace*{\fill}
+        {\fontsize{15}{15}\MakeUppercase{\textbf{\Wuniversity}}}\\
+        \vspace{1.2ex}
+        {\fontsize{15}{15}\MakeUppercase{\textbf{\Wschool}}}\\
+        \vspace{1.2ex}
+        {\fontsize{15}{15}\MakeUppercase{\textbf{\Wprogramme}}}\\
+        \vspace{1.2ex}
+        {\fontsize{15}{15}\MakeUppercase{\textbf{\Wdepartment}}}\\
+        \vspace*{\fill}
+        \ifthenelse{\equal{\Wworktype}{phd}}{\MakeUppercase{\textbf{Tese de doutorado}}}{\MakeUppercase{\textbf{Dissertação de mestrado}}} \MakeUppercase{\textbf{acadêmico}}\\
+        \ifenglish
+            \vspace*{\fill}
+            {\fontsize{23}{23} \textbf{\textit{\Wtitleen}}} \\
+        \fi
+        \vspace*{\fill}
+        {\fontsize{23}{23} \textbf{\textit{\Wtitle}}}\\
+        \vspace*{\fill}
+        \begin{flushleft}
+            \vspace{0.2cm}
+            Autor: \Wauthor \\
+            Orientador: \Wsupervisor \\
+
+            \vspace{0.4cm}
+            A Banca Examinadora composta pelos membros abaixo aprovou esta \ifthenelse{\equal{\Wworktype}{phd}}{Tese}{Dissertação}:  \\
+
+            \vspace{0.6cm}
+            \hrulefill\\
+            \textbf{\Wexamf, Presidente\\ \Wexamfinst}\\
+
+            \vspace{0.6cm}
+            \hrulefill\\
+            \textbf{\Wexams\\ \Wexamsinst }\\
+            
+            \vspace{0.6cm}
+            \hrulefill\\
+            \textbf{\Wexamt\\ \Wexamtinst }\\
+            
+            \vspace{0.6cm}
+            A Ata da defesa com as respectivas assinaturas dos membros encontra-se no processo de vida acadêmica do aluno.
+        \end{flushleft}
+        \begin{flushright}
+            \vspace{1.2cm}
+            Campinas, \Wdegreeday de \Wdegreemonth de \Wdegreeyear.
+            % \date
+    \end{flushright}
+    \end{center}
+\end{emptyenv}
+}
+
+\newcommand{\maketablecontents}{
+\begin{listsenv}
+    \tableofcontents
+\end{listsenv}
+}
+
+\newcommand{\makelistfigures}{
+\begin{listsenv}
+    \listoffigures
+\end{listsenv}
+\thispagestyle{empty}
+}
+
+\newcommand{\makelistables}{
+\begin{listsenv}
+    \listoftables
+\end{listsenv}
+\thispagestyle{empty}
+}
+
+\newcommand{\printnomencl}{
+  \begin{listsenv}
+    \ifenglish
+      \needspace{20em}
+      \printnomenclature
+    \else
+        \needspace{20em}
+        \renewcommand{\nomname}{Lista de Abreviaturas e Siglas}
+        \printnomenclature
+    \fi
+  \end{listsenv}
+}
+
+\newcommand{\printbib}{
+\begin{bibenv}
+    \printbibliography[heading=bibintoc]
+\end{bibenv}
+}
+
+% ***************************** Library Catalog ****************************
+
+\newcommand{\makelibrarycatalog}{
+    \begin{emptyenv}
+        \clearpage
+        \ifdefempty{\Wlibcatalog}{
+            \begin{center}
+                FICHA CATALOGRÁFICA ELABORADA PELA \\
+                BIBLIOTECA DA ÁREA DE ENGENHARIA E ARQUITETURA - BAE - UNICAMP \\
+            \end{center}
+        }{
+            \includepdf[pages={1}]{\Wlibcatalog}
+        }
+    \end{emptyenv}
+}
+
+% ***************************** Epigraph Page ****************************
+
+\newcommand{\makeepigraph}{
+\begin{emptyenv}
+        \vspace*{\fill}
+        \epigraph{\emph{\Wepigraphtext}}{\Wepigraphauthor}
+\end{emptyenv}
+}
+
+
+% *************************************************************************
+% ************************ Environments ***********************************
+% *************************************************************************
+
+\newenvironment{emptyenv}
+{
+    \clearpage
+    \thispagestyle{empty}
+}
+
+\newenvironment{listsenv}
+{   
+    \fancypagestyle{plain}{%
+        \fancyhf{}% clears all header and footer fields
+        % \fancyhead[RE,RO]{}% Add the page number
+        \fancyhead{}
+        \fancyfoot{}
+    }
+    \cleardoublepage
+    \pagestyle{empty}
+    % \pagenumbering{gobble}
+    % \patchcmd{\chapter}{plain}{empty}{}{}
+    \titleformat{\chapter}{\filcenter}{}{0pt}{\normalfont\fontsize{15}{15}\bfseries}
+}{
+    \cleardoublepage
+    \pagestyle{numbered}
+    \fancypagestyle{plain}{%
+        \fancyhf{}% clears all header and footer fields
+        \fancyhead[RE,RO]{\thepage}% Add the page number
+    }
+    % \pagenumbering{arabic}
+
+}
+
+\newenvironment{bibenv}
+{
+    \clearpage
+    \titleformat{\chapter}{\filcenter}{}{0pt}{\normalfont\fontsize{15}{15}\bfseries}
+}
+
+    
+\newenvironment{resumo}
+{
+    \clearpage
+    % \setsinglecolumn
+    \titleformat{\chapter}{\filcenter}{}{0pt}{\normalfont\fontsize{15}{15}\bfseries}
+    \chapter*{Resumo}
+    
+    % \centering
+    % \vspace*{0.2\textheight}
+    \vspace*{0.75cm}
+    \thispagestyle{empty}
+}
+
+% ************************ Dedication *************************************
+
+\newenvironment{dedication}
+{
+    \clearpage
+    % \setsinglecolumn
+    \titleformat{\chapter}{\filcenter}{}{0pt}{\normalfont\fontsize{15}{15}\bfseries}
+    \ifenglish
+        \chapter*{Dedication}
+    \else
+        \chapter*{Dedicatória}
+    \fi
+    
+    % \centering
+    % \vspace*{0.2\textheight}
+    \vspace*{1cm}
+    \thispagestyle{empty}
+}
+
+% ************************** Acknowledgement ******************************
+
+\newenvironment{acknowledgements}
+{
+    \clearpage
+    \titleformat{\chapter}{\filcenter}{}{0pt}{\normalfont\fontsize{15}{15}\bfseries}
+    % \titlespacing*{\chapter}{0pt}{0pt}{20pt}
+    \ifenglish
+        \chapter*{Acknowledgement}
+    \else
+        \chapter*{Agradecimentos}
+    \fi
+    
+    % \setsinglecolumn
+    % \vspace*{0.2\textheight}
+    % \centering
+    \vspace*{1cm}
+    \thispagestyle{empty}
+}
+    
+% ************************** Epigraph *************************************
+
+\newenvironment{epigraphenv}
+{
+\clearpage
+% \titleformat{\chapter}{\filcenter}{}{0pt}{\normalfont\fontsize{15}{15}\bfseries}
+% \chapter*{Epigraph}
+
+\vspace*{6in}
+\thispagestyle{empty}
+}
+
+% *************************** Abstract ************************************
+
+\renewenvironment{abstract}
+{
+    \clearpage
+    % \setsinglecolumn
+    \titleformat{\chapter}{\filcenter}{}{0pt}{\normalfont\fontsize{15}{15}\bfseries}
+    \chapter*{Abstract}
+    
+    % \centering
+    % \vspace*{0.2\textheight}
+    \vspace*{1cm}
+    \thispagestyle{empty}
+}
+
+%  *********************** Compiler specific font settings ************************
+\ifxetex
+  % XeLaTeX
+  \usepackage{amsmath}
+  \usepackage{fontspec}
+  \usepackage[]{unicode-math}
+  \setmainfont[
+    Extension = .otf,
+    UprightFont = *-regular,
+    BoldFont = *-bold,
+    ItalicFont = *-italic,
+    BoldItalicFont = *-bolditalic,
+  ]{xits}
+  
+  \setmathfont[ 
+    Extension = .otf,
+    BoldFont = *bold,
+  ]{xits-math}
+  
+\else
+  % default: pdfLaTeX
+  \usepackage[utf8]{inputenc}
+  \usepackage[T1]{fontenc}
+  
+  % If building with PDFLaTeX, use microtype spacing adjustments
+  \usepackage[final]{microtype}
+  
+  \input{glyphtounicode}
+  \pdfglyphtounicode{f_f}{FB00}
+  \pdfglyphtounicode{f_i}{FB01}
+  \pdfglyphtounicode{f_l}{FB02}
+  \pdfglyphtounicode{f_f_i}{FB03}
+  \pdfglyphtounicode{f_f_l}{FB04}
+  \pdfgentounicode=1
+
+  \usepackage{amsfonts}
+  \usepackage{amsmath}
+  \usepackage{amssymb}
+\fi

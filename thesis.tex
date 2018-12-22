@@ -1,0 +1,64 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                            %%
+%% Class ``FEM Template PDF'' .                                               %%
+%%                                                                            %%
+%% A PhD thesis and Master dissertation LaTeX template for School of .........%%
+%% Mechanical Engineering of the University of Campinas.......................%%
+%%                                                                            %%
+%%                                                                            %%
+%% Version: v1.0.0                                                            %%
+%% Authors: Felipe de Castro Teixeira Carvalho                                %%
+%% License: MIT License (c) 2018 Felipe C. T. Carvalho                        %%
+%% GitHub Repo: https://github.com/kks32/phd-thesis-template/                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[a4paper,12pt]{report}
+
+
+% ******************************** Settings ********************************
+
+\include{Classes/cfg}        % Essential LaTeX packages and macros
+\include{thesis-info}        % Thesis/dissertation information
+\include{Preamble/preamble}  % Custom LaTeX packages
+
+\begin{document}
+
+% ******************************** Front Matter ********************************
+  
+  % If you want to remove one of the front matter pages just comment out the 
+  % line that create or insert the desired page.
+  
+  \maketitle                                 % Create the title page
+  \makesignature                             % Create the signature page
+  \makelibrarycatalog                        % Insert the library catalog page
+  \makeapproval                              % Create the approval page
+  \include{Dedication/dedication}            % Insert the dedication page
+  \include{Acknowledgement/acknowledgement}  % Insert the acknowledgement page
+  \makeepigraph                              % Create the epigraph page
+  \include{Abstract/abstract_pt}             % Insert the abstract page in portuguese
+  \include{Abstract/abstract}                % Insert the abstract page in english
+
+% % *********************** Adding TOC and List of Figures ***********************
+
+  \makelistfigures    % Create the figure list
+  \makelistables      % Create the table list
+  \printnomencl       % Create the nomenclature
+  \maketablecontents  % Create the table of contents
+    
+% ******************************** Main Matter *********************************
+  
+  \include{Chapter1/chapter1}
+  \include{Chapter2/chapter2}
+  \include{Chapter3/chapter3}
+
+% ******************************** Bibliography *********************************
+
+  \cleardoublepage
+  \printbib         % Insert the bibliography - Change the references path at
+                    % preamble file.
+
+% ******************************** Appendix ************************************
+
+  \include{Appendix/A/appendix}  % Insert the appendix A
+
+\end{document}

@@ -1,0 +1,59 @@
+
+\begin{tikzpicture}[auto, node distance = 0.5cm]
+    % Define block styles
+  \tikzstyle{decision} = [diamond, draw, fill=blue!20, 
+      text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+  % \tikzstyle{block} = [rectangle, draw, text width=10em, text centered, minimum height= 3em, node distance=1.5cm, line width=0.5mm]
+  % \tikzstyle{block} = [rectangle, draw, line width=0.5mm, node distance=0.85cm,
+  % maximum width=0.2*\columnwidth]
+  \tikzstyle{block} = [
+    rectangle, draw, line width=0.5mm, text centered, 
+    minimum height=1em,
+    execute at begin node={\begin{varwidth}{15em} \centering},
+    execute at end node={\end{varwidth}}]
+  % \tikzstyle{blockround} = [rectangle, draw, text width=10em, text centered, minimum height=3em, node distance=1.5cm, line width=0.5mm, rounded corners]
+  \tikzstyle{blockround} = [rectangle, draw,  line width=0.5mm, rounded corners, node distance=0.8cm]
+  % \tikzstyle{block} = [rectangle, draw, text width=5em, text centered, minimum height=4em, node distance=2.5cm]
+  \tikzstyle{line} = [draw, -latex', line width=0.5mm]
+
+  \tikzstyle{every node}=[font=\footnotesize]
+    % Place nodes
+    \node [blockround] (init) {Start};
+    \node [block, below= of init] (check) {Check the manual valves of the gas, liquid and two-phase lines};
+    \node [block, below= of check] (switch) {Switch on \textit{FT-101}, \textit{FCV-101}, \textit{DAQ-301}, \textit{ARD-301}, \textit{PXI-301} and \textit{COND-301}};
+    \node [block, below= of switch] (regulate) {Switch on SY-101 and regulate the air pressure supply};
+    \node [block, below= of regulate] (super) {Start the supervisory program};
+    \node [block, below= of super] (liqgas) {Set the desired liquid and gas flow rates};
+    \node [block, below= of liqgas] (stab) {Wait for the flow to stabilise};
+    \node [block, below= of stab] (acq) {Acquire and store the vibration and process variable data for \SI{30}{\second}};
+    \node [block, below= of acq] (trig) {Trigger the fast-closing system};
+    \node [block, below= of trig] (wait20) {Wait \SI{20}{\second}};
+    \node [block, below= of wait20] (orelief) {Open the relief valve};
+
+    % \node [block, above= of orelief] (wait15) {Wait \SI{15}{\second}};
+    \node [block, right= 3.5cm of orelief] (wait15) {Wait \SI{15}{\second}};
+    \node [block, above= of wait15] (GVF) {Measure the GVF};
+    \node [block, above= of GVF] (crelief) {Close the relief valve};
+    \node [block, above= 0.9cm of crelief] (wait1-1) {Wait \SI{1}{\second}};
+    \node [block, above= 0.8cm of wait1-1] (trig2) {Trigger the fast-closing system};
+    \node [block, above= of trig2] (wait1-2) {Wait \SI{1}{\second}};
+
+    % Draw edges
+    \path [line] (init) -- (check);
+    \path [line] (check) -- (switch);
+    \path [line] (switch) -- (regulate);
+    \path [line] (regulate) -- (super);
+    \path [line] (super) -- (liqgas);
+    \path [line] (liqgas) -- (stab);
+    \path [line] (stab) -- (acq);
+    \path [line] (acq) -- (trig);
+    \path [line] (trig) -- (wait20);
+    \path [line] (wait20) -- (orelief);
+    \path [line] (orelief) -- (wait15);
+    \path [line] (wait15) -- (GVF);
+    \path [line] (GVF) -- (crelief);
+    \path [line] (crelief) -- (wait1-1);
+    \path [line] (wait1-1) -- (trig2);
+    \path [line] (trig2) -- (wait1-2);
+    \path [line] (wait1-2) -- (liqgas);
+\end{tikzpicture}
