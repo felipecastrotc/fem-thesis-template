@@ -1,3 +1,6 @@
+% latexmk compile the nomenclature
+\immediate\write18{makeindex -s nomencl.ist -o "\jobname.nls" "\jobname.nlo"}
+
 % *********************************************************************
 % ******************************** Packages ***************************
 % *********************************************************************
@@ -167,7 +170,7 @@
 % Campinas}}
 
 % University logo
-\newcommand{\logo}{UNICAMP_logo}
+\newcommand{\logo}{UNICAMP_logo.eps}
 
 
 % *************************************************************************
