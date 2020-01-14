@@ -34,17 +34,23 @@
   \begin{align}
   CIF: \hspace*{5mm}F_0^j(a) = \frac{1}{2\pi \iota} \oint_{\gamma} \frac{F_0^j(z)}{z - a} dz
   \end{align}
+  
+  % parent=greek is for Greek Symbols
+  \newglossaryentry{g-pi}{type=symbol, parent=greek, name={$\pi$}, description={$\simeq 3.14\ldots$}}
+  % parent=greek is for Greek Symbols
+  \newglossaryentry{g-i}{type=symbol, parent=greek, name={$\iota$}, description={unit imaginary number $\sqrt{-1}$}}
+  % parent=greek is for Greek Symbols
+  \newglossaryentry{g-g}{type=symbol, parent=greek, name={$\gamma$}, description={a simply closed curve on a complex plane}}
+  % parent=osymb is for Other symbols
+  \newglossaryentry{o-i}{type=symbol, parent=osymb, name={$\oint_\gamma$}, description={integration around a curve $\gamma$}}
+  % parent=super is for superscripts
+  \newglossaryentry{S-j}{type=symbol, parent=super, name={$j$}, description={superscript index}}
+  % parent=sub is for subscript
+  \newglossaryentry{s-0}{type=symbol, parent=sub, name={$0$}, description={subscript index}}
+  % For a complete list of options of symbols look at the end of the preamble.tex
 
-  \nomenclature[z-cif]{$CIF$}{Cauchy's Integral Formula}                                % first letter Z is for Acronyms 
-  \nomenclature[a-F]{$F$}{complex function}                                                   % first letter A is for Roman symbols
-  \nomenclature[g-p]{$\pi$}{ $\simeq 3.14\ldots$}                                             % first letter G is for Greek Symbols
-  \nomenclature[g-i]{$\iota$}{unit imaginary number $\sqrt{-1}$}                      % first letter G is for Greek Symbols
-  \nomenclature[g-g]{$\gamma$}{a simply closed curve on a complex plane}  % first letter G is for Greek Symbols
-  \nomenclature[x-i]{$\oint_\gamma$}{integration around a curve $\gamma$} % first letter X is for Other Symbols
-  \nomenclature[r-j]{$j$}{superscript index}                                                       % first letter R is for superscripts
-  \nomenclature[s-0]{$0$}{subscript index}                                                        % first letter S is for subscripts
 
-%********************************** Second Section  *****************************
+%********************************** Second Section  ***************************
 \section{Why do we use loren ipsum?}\label{intro:why}
 
   It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using `Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for `lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
@@ -65,32 +71,32 @@
 
   1914 translation by H. Rackham: ``On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains."
 
-\nomenclature[z-DEM]{DEM}{Discrete Element Method}
-\nomenclature[z-FEM]{FEM}{Finite Element Method}
-\nomenclature[z-PFEM]{PFEM}{Particle Finite Element Method}
-\nomenclature[z-FVM]{FVM}{Finite Volume Method}
-\nomenclature[z-BEM]{BEM}{Boundary Element Method}
-\nomenclature[z-MPM]{MPM}{Material Point Method}
-\nomenclature[z-LBM]{LBM}{Lattice Boltzmann Method}
-\nomenclature[z-MRT]{MRT}{Multi-Relaxation 
+\newacronym[sort={a}]{DEM}{DEM}{Discrete Element Method}
+\newacronym[sort={a}]{FEM}{FEM}{Finite Element Method}
+\newacronym[sort={a}]{PFE}]{PFEM}{Particle Finite Element Method}
+\newacronym[sort={a}]{FVM}{FVM}{Finite Volume Method}
+\newacronym[sort={a}]{BEM}{BEM}{Boundary Element Method}
+\newacronym[sort={a}]{MPM}{MPM}{Material Point Method}
+\newacronym[sort={a}]{LBM}{LBM}{Lattice Boltzmann Method}
+\newacronym[sort={a}]{MRT}{MRT}{Multi-Relaxation 
 Time}
-\nomenclature[z-RVE]{RVE}{Representative Elemental Volume}
-\nomenclature[z-GPU]{GPU}{Graphics Processing Unit}
-\nomenclature[z-SH]{SH}{Savage Hutter}
-\nomenclature[z-CFD]{CFD}{Computational Fluid Dynamics}
-\nomenclature[z-LES]{LES}{Large Eddy Simulation}
-\nomenclature[z-FLOP]{FLOP}{Floating Point Operations}
-\nomenclature[z-ALU]{ALU}{Arithmetic Logic Unit}
-\nomenclature[z-FPU]{FPU}{Floating Point Unit}
-\nomenclature[z-SM]{SM}{Streaming Multiprocessors}
-\nomenclature[z-PCI]{PCI}{Peripheral Component Interconnect}
-\nomenclature[z-CK]{CK}{Carman - Kozeny}
-\nomenclature[z-CD]{CD}{Contact Dynamics}
-\nomenclature[z-DNS]{DNS}{Direct Numerical Simulation}
-\nomenclature[z-EFG]{EFG}{Element-Free Galerkin}
-\nomenclature[z-PIC]{PIC}{Particle-in-cell}
-\nomenclature[z-USF]{USF}{Update Stress First}
-\nomenclature[z-USL]{USL}{Update Stress Last}
-\nomenclature[s-crit]{crit}{Critical state}
-\nomenclature[z-DKT]{DKT}{Draft Kiss Tumble}
-\nomenclature[z-PPC]{PPC}{Particles per cell}
+\newacronym[sort={a}]{RVE}{RVE}{Representative Elemental Volume}
+\newacronym[sort={a}]{GPU}{GPU}{Graphics Processing Unit}
+\newacronym[sort={a}]{SH}{SH}{Savage Hutter}
+\newacronym[sort={a}]{CFD}{CFD}{Computational Fluid Dynamics}
+\newacronym[sort={a}]{LES}{LES}{Large Eddy Simulation}
+\newacronym[sort={a}]{FLO}]{FLOP}{Floating Point Operations}
+\newacronym[sort={a}]{ALU}{ALU}{Arithmetic Logic Unit}
+\newacronym[sort={a}]{FPU}{FPU}{Floating Point Unit}
+\newacronym[sort={a}]{SM}{SM}{Streaming Multiprocessors}
+\newacronym[sort={a}]{PCI}{PCI}{Peripheral Component Interconnect}
+\newacronym[sort={a}]{CK}{CK}{Carman - Kozeny}
+\newacronym[sort={a}]{CD}{CD}{Contact Dynamics}
+\newacronym[sort={a}]{DNS}{DNS}{Direct Numerical Simulation}
+\newacronym[sort={a}]{EFG}{EFG}{Element-Free Galerkin}
+\newacronym[sort={a}]{PIC}{PIC}{Particle-in-cell}
+\newacronym[sort={a}]{USF}{USF}{Update Stress First}
+\newacronym[sort={a}]{USL}{USL}{Update Stress Last}
+\newacronym[sort={a}]{cri}]{crit}{Critical state}
+\newacronym[sort={a}]{DKT}{DKT}{Draft Kiss Tumble}
+\newacronym[sort={a}]{PPC}{PPC}{Particles per cell}

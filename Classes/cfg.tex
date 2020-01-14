@@ -346,16 +346,27 @@
 \thispagestyle{empty}
 }
 
-\newcommand{\printnomencl}{
+\newcommand{\makenomenclature}{
   \begin{listsenv}
     \ifenglish
-      \needspace{20em}
-      \printnomenclature
+      \section*{List of Symbols}
     \else
-        \needspace{20em}
-        \renewcommand{\nomname}{Lista de Abreviaturas e Siglas}
-        \printnomenclature
+      \section*{List of Símbolos}
     \fi
+    \vspace{-2em}
+    \glsaddall
+    \printglossary[type=symbol,style=supergroup]
+  \end{listsenv}
+
+  \begin{listsenv}
+    \ifenglish
+      \section*{List of Acronyms}
+    \else
+      \section*{Lista de Abreviaturas e Siglas}
+    \fi
+    \vspace{-2em}
+    \glsaddall
+    \printglossary[type=acronym]
   \end{listsenv}
 }
 
